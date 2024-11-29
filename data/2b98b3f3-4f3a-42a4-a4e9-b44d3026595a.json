@@ -1,15 +1,22 @@
 {
   "author": "RentSafeTO@toronto.ca",
   "author_email": "RentSafeTO@toronto.ca",
-  "civic_issues": "Affordable housing,Poverty reduction",
+  "civic_issues": [
+    "Affordable housing",
+    "Poverty reduction"
+  ],
   "creator_user_id": "329e1506-b545-4fc7-a4ea-e614f220eea7",
   "dataset_category": "Table",
   "date_published": "2019-07-23 16:32:27.841775",
   "excerpt": "This dataset contains building information for rental buildings that are registered in the City's RentSafeTO: Apartment Building Standards program.",
-  "formats": "CSV,JSON,XML",
+  "formats": [
+    "CSV",
+    "JSON",
+    "XML"
+  ],
   "id": "2b98b3f3-4f3a-42a4-a4e9-b44d3026595a",
   "information_url": "https://www.toronto.ca/community-people/housing-shelter/rental-housing-standards/apartment-building-standards/",
-  "is_retired": "false",
+  "is_retired": false,
   "isopen": false,
   "last_refreshed": "2024-11-05 12:00:32.849803",
   "license_id": "open-government-licence-toronto",
@@ -42,7 +49,12 @@
   "refresh_rate": "Monthly",
   "state": "active",
   "title": "Apartment Building Registration",
-  "topics": "Business,City government,Development and infrastructure,Locations and mapping",
+  "topics": [
+    "Business",
+    "City government",
+    "Development and infrastructure",
+    "Locations and mapping"
+  ],
   "type": "dataset",
   "version": null,
   "resources": [
