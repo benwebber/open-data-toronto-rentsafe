@@ -1,0 +1,22 @@
+title: RentSafeTO
+description_html: >
+  <p><a href="https://www.toronto.ca/community-people/housing-shelter/rental-housing-tenant-information/rental-housing-standards/apartment-building-standards/">RentSafeTO: Apartment Building Standards</a> (ABS) is a bylaw enforcement program established in 2017 to ensure that owners and operators of apartment buildings with three or more storeys or 10 or more units comply with building maintenance standards.
+license: Open Government Licence - Toronto
+license_url: https://open.toronto.ca/open-data-licence/
+about_url: https://github.com/benwebber/open-data-toronto-rentsafe/
+databases:
+  rentsafe:
+    tables:
+      sqlite_sequence:
+        hidden: true
+      building:
+        source: Apartment Building Registration - City of Toronto Open Data Portal
+        source_url: https://open.toronto.ca/dataset/apartment-building-registration/
+        description_html: >
+          <p>Buildings registered with the ABS program.
+          <p>This table has a large number of columns. Consider exploring the more focused views instead.
+      building_evaluation:
+        source: Apartment Building Evaluation - City of Toronto Open Data Portal
+        source_url: https://open.toronto.ca/dataset/apartment-building-evaluation/
+        description: >
+          Evaluation scores for registered buildings.

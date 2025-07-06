@@ -1,0 +1,10 @@
+[project]
+name = "open-data-toronto-rentsafe"
+dynamic = ["version"]
+dependencies = [
+  "datasette",
+  "datasette-geojson-map",
+]
+
+[tool.ruff.format]
+quote-style = "preserve"

@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+import argparse
+import datetime as dt
+import json
+import re
+import sqlite3
+import sys
+from enum import StrEnum
+from contextlib import closing
+from pathlib import Path
+
+
+class Pattern(StrEnum):
+    MON_DAY_YEAR = r'(?P<month>[A-Za-z]+)\s*(?P<day>\d+)\s*,\s*(?P<year>\d+)'
+
+
+def main(args: list[str]) -> None:
+    args_ = parse_args(args)
+    db = sqlite3.connect(args_.db)
+    db.create_function('format_date', 1, format_date, deterministic=True)
+    db.create_function('split', 1, split, deterministic=True)
+    with closing(db), db:
+        db.executescript('''
+UPDATE building SET date_elevators_last_inspected = format_date(date_elevators_last_inspected);
+UPDATE building SET amenities = split(amenities);
+UPDATE building SET parking_types = split(parking_types);
+        ''')
+
+
+def format_date(s: str) -> str:
+    if not (match := re.match(Pattern.MON_DAY_YEAR, s)):
+        return s
+    day = int(match.group('day'))
+    month = match.group('month')
+    year = match.group('year')
+    d = dt.datetime.strptime(f'{day} {month} {year}', '%d %b %Y')
+    return d.strftime('%Y-%m-%d')
+
+
+def split(s) -> str:
+    return json.dumps([x.strip() for x in s.split(',') if x.strip()])
+
+
+def parse_args(args: list[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('db', type=Path)
+    return parser.parse_args(args)
+
+
+if __name__ == '__main__':
+    main(sys.argv[1:])

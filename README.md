@@ -1,8 +1,24 @@
-# RentSafe
+# RentSafeTO
 
-This is a [Git scraping](https://simonwillison.net/series/git-scraping/) mirror of Toronto's [Apartment Building Registration](https://open.toronto.ca/dataset/apartment-building-registration/) data.
+This is a [Git scraping](https://simonwillison.net/series/git-scraping/) mirror of Toronto's [RentSafeTO](https://open.toronto.ca/dataset/apartment-building-evaluation/) data set.
 
-The [Apartment Building Standards](https://www.toronto.ca/community-people/housing-shelter/rental-housing-tenant-information/rental-housing-standards/apartment-building-standards/rentsafeto-for-building-owners/) programme, also known as RentSafeTO, ensures that rental building owners and operators comply with maintenance standards.
+## Database
+
+This project builds an SQLite database of the data, as well as a [Datasette](https://datasette.io/) image to explore the data.
+Download the [latest version](https://github.com/benwebber/open-data-toronto-rentsafe/releases/latest) of database from the [releases](https://github.com/benwebber/open-data-toronto-rentsafe/releases) page.
+
+Run the latest published image with Docker:
+
+```
+docker run -p 8000:8000 ghcr.io/benwebber/open-data-toronto-rentsafe:latest
+```
+
+Or build the database locally and run the image with Docker Compose:
+
+```
+make rentsafe.db
+docker compose up
+```
 
 ## Licence
 
