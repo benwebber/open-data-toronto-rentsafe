@@ -3,8 +3,8 @@ set -euo pipefail
 
 mkdir -p data
 curl \
-  -o data/registrations.csv \
-  'https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/2b98b3f3-4f3a-42a4-a4e9-b44d3026595a/resource/97b8b7a4-baca-49c7-915d-335322dbcf95/download/Apartment%20Building%20Registration%20Data.csv'
+  'https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/2b98b3f3-4f3a-42a4-a4e9-b44d3026595a/resource/97b8b7a4-baca-49c7-915d-335322dbcf95/download/Apartment%20Building%20Registration%20Data.csv' \
+  | perl -pe 's/[^,]*?,(.*)/\1/' > data/registrations.csv
 curl \
-  -o data/evaluations.csv \
-  'https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/4ef82789-e038-44ef-a478-a8f3590c3eb1/resource/7fa98ab2-7412-43cd-9270-cb44dd75b573/download/Apartment%20Building%20Evaluations%202023%20-%20current.csv'
+  'https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/4ef82789-e038-44ef-a478-a8f3590c3eb1/resource/7fa98ab2-7412-43cd-9270-cb44dd75b573/download/Apartment%20Building%20Evaluations%202023%20-%20current.csv' \
+  | perl -pe 's/[^,]*?,(.*)/\1/' > data/evaluations.csv
