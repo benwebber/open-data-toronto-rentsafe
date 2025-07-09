@@ -21,3 +21,6 @@ jobs:
           git commit -m 'Fetch latest data' || exit 0
           git tag "v$(TZ=America/Toronto date +'%Y.%m.%d')"
           git push && git push --tags
+      - name: Trigger release workflow
+        run: |-
+          gh api /repos/benwebber/open-data-toronto-rentsafe/actions/workflows/release.yaml/dispatches --raw-field ref="$(git describe --tags HEAD)"
